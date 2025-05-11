@@ -7,7 +7,7 @@ const connectDb = async () => {
   if (mongoose.connection.readyState >= 1) return;
 
   try {
-    await mongoose.connect(process.env.MONGODB_URI, {
+    await mongoose.connect("mongodb+srv://mujtaba21:mujtaba123@cluster0.tcsgq.mongodb.net/", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       serverSelectionTimeoutMS: 5000,

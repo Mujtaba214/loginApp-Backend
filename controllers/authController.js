@@ -24,11 +24,11 @@ export const login = async (req, res) => {
 
   try {
     const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ message: "Invalid credentials" });
+    if (!user) return res.status(400).json({ message: "Invalid credentials applied" });
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch)
-      return res.status(401).json({ message: "Invalid credentialls" });
+      return res.status(401).json({ message: "Invalid credentialls applied" });
 
     res.json({
       user: { id: user._id, name: user.name, email: user.email },

@@ -7,7 +7,10 @@ export const register = async (req, res) => {
 
   try {
     let user = await User.findOne({ email });
-    if (user) return res.status(400).json({ message: "User already exists here apply " });
+    if (user)
+      return res
+        .status(400)
+        .json({ message: "User already exists here apply now " });
 
     const hashedPassword = await bcrypt.hash(password, 10);
     user = new User({ name, email, password: hashedPassword });
@@ -24,11 +27,16 @@ export const login = async (req, res) => {
 
   try {
     const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ message: "Invalid credentials applied here now });
+    if (!user)
+      return res
+        .status(400)
+        .json({ message: "Invalid credentials applied here now" });
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch)
-      return res.status(401).json({ message: "Invalid credentialls applied here" });
+      return res
+        .status(401)
+        .json({ message: "Invalid credentialls applied here" });
 
     res.json({
       user: { id: user._id, name: user.name, email: user.email },

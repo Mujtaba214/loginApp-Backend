@@ -10,7 +10,7 @@ export const register = async (req, res) => {
     if (user)
       return res
         .status(400)
-        .json({ message: "User already exists here apply now " });
+        .json({ message: "User already exists here apply nowwww " });
 
     const hashedPassword = await bcrypt.hash(password, 10);
     user = new User({ name, email, password: hashedPassword });
